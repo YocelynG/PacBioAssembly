@@ -1,13 +1,13 @@
-# PacBioAssembly
+# PacBio assembly: from reads to chromosomes
 
-PacBioAssembly is a pipeline for generating genome assemblies from
-**PacBio HiFi** data, including polishing and scaffolding steps.  
+Pipeline for generating genome assemblies from **PacBio HiFi** data,
+including polishing and scaffolding steps.  
 It integrates tools such as **Flye**, **Hifiasm**, **HiFiAdapterFilt**,
 **Gapless**, **Racon**, and **RagTag**.
 
 ------------------------------------------------------------------------
 
-## 🧭 Overview
+## 🛠️ Overview
 
 This pipeline includes the following steps:
 
@@ -37,7 +37,7 @@ distributed via
 fasterq-dump SRA_Accession -F fastq -o Out_pb -e 2
 ```
 
-### BAM to Fastq
+### 🔄 BAM to Fastq
 
 Converting BAM files to Fastq format and removing adapters using
 [HiFiAdapterFilt](https://github.com/sheinasim/HiFiAdapterFilt)
@@ -50,7 +50,7 @@ pbadapterfilt.sh  -t 20 -o ~/PacBio_filter_fastq/
 
 ------------------------------------------------------------------------
 
-### 🧬 Genome assembly
+### 🧬 🧩 Genome assembly
 
 Using two different genome assemblers
 
@@ -78,7 +78,9 @@ quast.py ID_hifiasm_ctg.fasta -o ID_hifiasm_stats.txt
 
 ------------------------------------------------------------------------
 
-### 🧹 Polishing with Gapless
+### 🧹 Polishing
+
+Option: Gapless
 
 ``` bash
 
@@ -118,7 +120,7 @@ gapless_used_reads.lst
 gapless_extended_polishing.csv gapless_raw_polishing.paf temp_finish.fastq
 ```
 
-Polishing with Minimap2, pbmm2, samtools and Racon
+🧯 Option2: Polishing with Minimap2, pbmm2, samtools and Racon
 
 ``` bash
 
@@ -174,7 +176,7 @@ grid.arrange(pie_chart, donut_chart, ncol = 2, widths = c(3, 3))
 
 ------------------------------------------------------------------------
 
-### Scaffolding
+### 🧬🔗 Scaffolding
 
 Ragtag: Connect contigs into chromosomes using homology (if a reference
 genome is available)
